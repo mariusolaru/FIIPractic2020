@@ -9,7 +9,8 @@ public class TestController {
 
     //git status
     //git add .
-    
+    //git commit -m "Initial commit"
+    //git push
 
     @Autowired
     private TestService testService;
