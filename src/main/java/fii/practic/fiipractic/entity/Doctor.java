@@ -1,5 +1,7 @@
 package fii.practic.fiipractic.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class Doctor {
     private String speciality;
 
     @OneToMany(mappedBy = "doctor")
+    @JsonManagedReference
     private List<Patient> patients;
 
     public List<Patient> getPatients() {

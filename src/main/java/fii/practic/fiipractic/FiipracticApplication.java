@@ -10,28 +10,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FiipracticApplication implements CommandLineRunner {
+public class FiipracticApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FiipracticApplication.class, args);
-    }
-
-    @Autowired
-    private DoctorJdbcRepository repository;
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Override
-    public void run(String... args) throws Exception {
-       /* Doctor doctor = new Doctor();
-        doctor.setId(1L);
-        doctor.setFirstName("Bogdan");
-        doctor.setLastName("Boca");
-        doctor.setSpeciality("medic");
-
-        repository.insert(doctor);
-
-        logger.info("All doctors -> {}", repository.findAll());*/
-
     }
 }

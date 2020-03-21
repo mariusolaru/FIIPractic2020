@@ -1,5 +1,7 @@
 package fii.practic.fiipractic.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,8 +22,8 @@ public class Patient {
     private Email email;
 
     @ManyToOne
+    @JsonBackReference
     private Doctor doctor;
-
 
     public String getFirstName() {
         return firstName;
