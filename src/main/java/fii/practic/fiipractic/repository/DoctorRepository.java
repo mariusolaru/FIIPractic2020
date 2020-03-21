@@ -11,7 +11,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
     /*
         Automatically generated query, only by naming convention
-        It knows to generate a "SELECT * from Doctor d join Patient p on d.id = p.id where p.firstName = <firstName>" because of method name
+        It knows to generate a "SELECT * from Doctor d join Patient p on d.id = p.doctorId where p.firstName = <firstName>" because of method name
         IntelliJ has great support for these queries, try to write "find" and add press CTRL + Space for suggestions
         Search for JPA Named query documentation
 
