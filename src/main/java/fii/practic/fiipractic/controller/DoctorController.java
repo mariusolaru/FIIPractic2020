@@ -29,7 +29,7 @@ public class DoctorController {
     }
 
     @GetMapping(value = "/filter")
-    public List<Doctor> getDoctorByPatientsFirstName(@RequestParam(value = "firstName") String firstName){
+    public List<Doctor> getDoctorsByPatientsFirstName(@RequestParam(value = "firstName") String firstName){
         return doctorService.findDoctorsByPatientsFirstName(firstName);
     }
 
