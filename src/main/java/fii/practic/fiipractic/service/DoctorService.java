@@ -12,6 +12,6 @@ public interface DoctorService {
 
     Doctor save(Doctor doctor);
 
-    Doctor findDoctorByPatientsFirstName(String firstName);
+    List<Doctor> findDoctorsByPatientsFirstName(String firstName);
 
 }
