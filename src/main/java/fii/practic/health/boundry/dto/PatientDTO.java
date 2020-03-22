@@ -1,4 +1,4 @@
-package fii.practic.fiipractic.dto;
+package fii.practic.health.boundry.dto;
 
 public class PatientDTO {
 

@@ -1,7 +1,8 @@
-package fii.practic.fiipractic.service;
+package fii.practic.health.control.service;
 
-import fii.practic.fiipractic.entity.Patient;
-import fii.practic.fiipractic.repository.PatientRepository;
+import fii.practic.health.control.service.PatientService;
+import fii.practic.health.entity.model.Patient;
+import fii.practic.health.entity.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

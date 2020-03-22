@@ -1,14 +1,15 @@
-package fii.practic.fiipractic.service;
+package fii.practic.health.control.service;
 
-import fii.practic.fiipractic.entity.Doctor;
-import fii.practic.fiipractic.repository.DoctorRepository;
+import fii.practic.health.control.service.DoctorService;
+import fii.practic.health.entity.model.Doctor;
+import fii.practic.health.entity.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DoctorServiceImpl implements DoctorService{
+public class DoctorServiceImpl implements DoctorService {
 
     private DoctorRepository doctorRepository;
 

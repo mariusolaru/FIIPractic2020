@@ -1,6 +1,8 @@
-package fii.practic.fiipractic.entity;
+package fii.practic.health.entity.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import fii.practic.health.entity.model.Doctor;
+import fii.practic.health.entity.model.Email;
 
 import javax.persistence.*;
 

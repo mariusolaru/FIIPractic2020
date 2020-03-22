@@ -1,6 +1,6 @@
-package fii.practic.fiipractic.repository;
+package fii.practic.health.entity.repository;
 
-import fii.practic.fiipractic.entity.Doctor;
+import fii.practic.health.entity.model.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

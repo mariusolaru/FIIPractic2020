@@ -1,4 +1,4 @@
-package fii.practic.fiipractic;
+package fii.practic.health;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

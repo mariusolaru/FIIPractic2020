@@ -1,4 +1,4 @@
-package fii.practic.fiipractic.config;
+package fii.practic.health.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

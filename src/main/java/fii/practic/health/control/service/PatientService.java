@@ -1,6 +1,6 @@
-package fii.practic.fiipractic.service;
+package fii.practic.health.control.service;
 
-import fii.practic.fiipractic.entity.Patient;
+import fii.practic.health.entity.model.Patient;
 
 import java.util.List;
 

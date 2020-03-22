@@ -1,4 +1,4 @@
-package fii.practic.fiipractic.entity;
+package fii.practic.health.entity.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

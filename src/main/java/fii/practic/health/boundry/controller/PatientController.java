@@ -1,11 +1,9 @@
-package fii.practic.fiipractic.controller;
+package fii.practic.health.boundry.controller;
 
-import fii.practic.fiipractic.dto.PatientDTO;
-import fii.practic.fiipractic.entity.Doctor;
-import fii.practic.fiipractic.entity.Email;
-import fii.practic.fiipractic.entity.Patient;
-import fii.practic.fiipractic.service.DoctorService;
-import fii.practic.fiipractic.service.PatientService;
+import fii.practic.health.boundry.dto.PatientDTO;
+import fii.practic.health.entity.model.Patient;
+import fii.practic.health.control.service.DoctorService;
+import fii.practic.health.control.service.PatientService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

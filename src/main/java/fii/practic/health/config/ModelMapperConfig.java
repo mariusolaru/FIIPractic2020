@@ -1,7 +1,7 @@
-package fii.practic.fiipractic.config;
+package fii.practic.health.config;
 
-import fii.practic.fiipractic.dto.PatientDTO;
-import fii.practic.fiipractic.entity.Patient;
+import fii.practic.health.boundry.dto.PatientDTO;
+import fii.practic.health.entity.model.Patient;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

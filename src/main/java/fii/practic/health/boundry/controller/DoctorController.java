@@ -1,7 +1,7 @@
-package fii.practic.fiipractic.controller;
+package fii.practic.health.boundry.controller;
 
-import fii.practic.fiipractic.entity.Doctor;
-import fii.practic.fiipractic.service.DoctorService;
+import fii.practic.health.entity.model.Doctor;
+import fii.practic.health.control.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
