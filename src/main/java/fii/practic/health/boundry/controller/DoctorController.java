@@ -67,7 +67,7 @@ public class DoctorController {
         if(dbDoctor != null) {
             modelMapper.map(doctorDTO, dbDoctor);
 
-            return new ResponseEntity<>(modelMapper.map(doctorService.patch(dbDoctor), DoctorDTO.class), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(modelMapper.map(doctorService.patch(dbDoctor), DoctorDTO.class), HttpStatus.OK);
         }
 
         return null;
@@ -82,7 +82,7 @@ public class DoctorController {
             modelMapper.map(doctorDTO, dbDoctor);
             modelMapper.getConfiguration().setSkipNullEnabled(true);
 
-            return new ResponseEntity<>(modelMapper.map(doctorService.update(dbDoctor), DoctorDTO.class), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(modelMapper.map(doctorService.update(dbDoctor), DoctorDTO.class), HttpStatus.OK);
         }
 
         return null;
