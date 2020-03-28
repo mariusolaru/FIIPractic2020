@@ -1,13 +1,9 @@
 package fii.practic.health.config;
 
-import fii.practic.health.boundry.dto.DoctorDTO;
 import fii.practic.health.boundry.dto.PatientDTO;
-import fii.practic.health.entity.model.Doctor;
 import fii.practic.health.entity.model.Patient;
-import org.modelmapper.Condition;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MappingContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

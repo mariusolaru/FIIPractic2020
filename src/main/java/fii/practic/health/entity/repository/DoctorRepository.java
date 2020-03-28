@@ -2,6 +2,8 @@ package fii.practic.health.entity.repository;
 
 import fii.practic.health.entity.model.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +21,6 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     */
     List<Doctor> findDoctorsByPatientsFirstName(String firstName);
 
+    @Query("SELECT d from Doctor d JOIN d.patients p WHERE p.lastName = :lastName")
+    List<Doctor> findDoctorByPatientsLastName(@Param("lastName") String lastName);
 }

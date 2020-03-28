@@ -1,6 +1,8 @@
 package fii.practic.health.boundry.controller;
 
 import fii.practic.health.boundry.dto.DoctorDTO;
+import fii.practic.health.boundry.exceptions.BadRequestException;
+import fii.practic.health.boundry.exceptions.NotFoundException;
 import fii.practic.health.control.service.PatientService;
 import fii.practic.health.entity.model.Doctor;
 import fii.practic.health.control.service.DoctorService;
@@ -37,8 +39,12 @@ public class DoctorController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<DoctorDTO> getById(@PathVariable("id") Long id) {
+    public ResponseEntity<DoctorDTO> getById(@PathVariable("id") Long id) throws NotFoundException {
         Doctor doctor = doctorService.getById(id);
+
+        if(doctor == null){
+            throw new NotFoundException(String.format("Doctor with id %d was not found", id));
+        }
 
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorDTO.class), HttpStatus.OK);
     }
@@ -71,18 +77,22 @@ public class DoctorController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<DoctorDTO> update(@PathVariable Long id, @RequestBody DoctorDTO doctorDTO){
-        Doctor dbDoctor = doctorService.getById(id);
-
-        if(dbDoctor != null) {
-            modelMapper.getConfiguration().setSkipNullEnabled(false);
-            modelMapper.map(doctorDTO, dbDoctor);
-            modelMapper.getConfiguration().setSkipNullEnabled(true);
-
-            return new ResponseEntity<>(modelMapper.map(doctorService.update(dbDoctor), DoctorDTO.class), HttpStatus.OK);
+    public ResponseEntity<DoctorDTO> update(@PathVariable Long id, @RequestBody DoctorDTO doctorDTO) throws NotFoundException, BadRequestException {
+        if(!id.equals(doctorDTO.getId())){
+            throw new BadRequestException(String.format("Id from PathVariable %d is different from id in Request body %d", id, doctorDTO.getId()));
         }
 
-        return null;
+        Doctor dbDoctor = doctorService.getById(id);
+
+        if(dbDoctor == null){
+            throw new NotFoundException(String.format("Doctor with id %d was not found", id));
+        }
+
+        modelMapper.getConfiguration().setSkipNullEnabled(false);
+        modelMapper.map(doctorDTO, dbDoctor);
+        modelMapper.getConfiguration().setSkipNullEnabled(true);
+
+        return new ResponseEntity<>(modelMapper.map(doctorService.update(dbDoctor), DoctorDTO.class), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")

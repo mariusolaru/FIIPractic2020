@@ -1,6 +1,5 @@
 package fii.practic.health.entity.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
@@ -31,7 +30,6 @@ public class Patient {
 
     @ManyToOne
     @JoinColumn(nullable = true)
-    @JsonBackReference
     private Doctor doctor;
 
     public String getFirstName() {
