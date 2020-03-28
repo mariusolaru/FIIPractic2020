@@ -30,6 +30,7 @@ public class Patient {
     private PhoneNumber phoneNumber;
 
     @ManyToOne
+    @JoinColumn(nullable = true)
     @JsonBackReference
     private Doctor doctor;
 

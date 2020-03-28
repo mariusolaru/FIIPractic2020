@@ -1,6 +1,5 @@
 package fii.practic.health.control.service;
 
-import fii.practic.health.control.service.DoctorService;
 import fii.practic.health.entity.model.Doctor;
 import fii.practic.health.entity.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

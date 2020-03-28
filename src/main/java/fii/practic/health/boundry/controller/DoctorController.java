@@ -1,22 +1,17 @@
 package fii.practic.health.boundry.controller;
 
 import fii.practic.health.boundry.dto.DoctorDTO;
-import fii.practic.health.boundry.dto.PatientDTO;
+import fii.practic.health.control.service.PatientService;
 import fii.practic.health.entity.model.Doctor;
 import fii.practic.health.control.service.DoctorService;
+import fii.practic.health.entity.model.Patient;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
-import org.modelmapper.config.Configuration;
-import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.convention.NamingConventions;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Type;
-import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -25,11 +20,13 @@ public class DoctorController {
 
     private DoctorService doctorService;
     private ModelMapper modelMapper;
+    private PatientService patientService;
 
     @Autowired
-    public DoctorController(DoctorService doctorService, ModelMapper modelMapper) {
+    public DoctorController(DoctorService doctorService, ModelMapper modelMapper, PatientService patientService) {
         this.doctorService = doctorService;
         this.modelMapper = modelMapper;
+        this.patientService = patientService;
     }
 
     @GetMapping
@@ -93,9 +90,16 @@ public class DoctorController {
         Doctor dbDoctor = doctorService.getById(id);
 
         if(dbDoctor != null){
+            List<Patient> patients = dbDoctor.getPatients();
+
+            for (Patient patient : patients){
+                patient.setDoctor(null);
+                patientService.save(patient);
+            }
+            dbDoctor.setPatients(null);
+            doctorService.save(dbDoctor);
             doctorService.delete(dbDoctor);
         }
-
         return ResponseEntity.noContent().build();
     }
 }

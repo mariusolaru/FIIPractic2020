@@ -30,7 +30,7 @@ public class Doctor {
     @JoinColumn(name = "phone_number_id")
     private PhoneNumber phoneNumber;
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor" , cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Patient> patients;
 
