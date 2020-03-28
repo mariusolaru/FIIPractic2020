@@ -1,11 +1,16 @@
 package fii.practic.health.boundry.controller;
 
+import fii.practic.health.boundry.dto.DoctorDTO;
 import fii.practic.health.boundry.dto.PatientDTO;
+import fii.practic.health.entity.model.Doctor;
 import fii.practic.health.entity.model.Patient;
 import fii.practic.health.control.service.DoctorService;
 import fii.practic.health.control.service.PatientService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,30 +31,62 @@ public class PatientController {
     }
 
     @GetMapping
-    public List<Patient> getAll(){
-        return patientService.getAll();
+    public ResponseEntity<List<PatientDTO>> getPatients() {
+        List<Patient> patients = patientService.getAll();
+
+        return new ResponseEntity<>((List<PatientDTO>) modelMapper.map(patients, new TypeToken<List<PatientDTO>>(){}.getType()), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public Patient getById(@PathVariable Long id){
-        return patientService.getById(id);
+    public ResponseEntity<PatientDTO> getById(@PathVariable("id") Long id) {
+        Patient patient = patientService.getById(id);
+
+        return new ResponseEntity<>(modelMapper.map(patient, PatientDTO.class), HttpStatus.OK);
     }
 
     @PostMapping
-    public Patient save(@RequestBody PatientDTO patientDTO){
-        /*Doctor doctorDb = doctorService.getById(patientDTO.getDoctorId());
+    public ResponseEntity<PatientDTO> save(@RequestBody PatientDTO patientDTO){
+        Patient newPatient = patientService.save(modelMapper.map(patientDTO, Patient.class));
 
+        return new ResponseEntity<>(modelMapper.map(newPatient, PatientDTO.class), HttpStatus.CREATED);
+    }
 
-        Email newEmail = new Email();
-        newEmail.setEmailAddress(patientDTO.getEmailAddress());
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<PatientDTO> patch(@PathVariable Long id, @RequestBody PatientDTO patientDTO){
+        Patient dbPatient = patientService.getById(id);
 
-        Patient newPatient = new Patient();
-        newPatient.setDoctor(doctorDb);
-        newPatient.setEmail(newEmail);
-        newPatient.setAge(patientDTO.getAge());
-        newPatient.setFirstName(patientDTO.getFirstName());
-        newPatient.setLastName(patientDTO.getLastName());*/
-        //return patientService.save(newPatient);
-        return patientService.save(modelMapper.map(patientDTO, Patient.class));
+        if(dbPatient != null) {
+            modelMapper.map(patientDTO, dbPatient);
+
+            return new ResponseEntity<>(modelMapper.map(patientService.patch(dbPatient), PatientDTO.class), HttpStatus.ACCEPTED);
+        }
+
+        return null;
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<PatientDTO> update(@PathVariable Long id, @RequestBody PatientDTO patientDTO){
+        Patient dbPatient = patientService.getById(id);
+
+        if(dbPatient != null) {
+            modelMapper.getConfiguration().setSkipNullEnabled(false);
+            modelMapper.map(patientDTO, dbPatient);
+            modelMapper.getConfiguration().setSkipNullEnabled(true);
+
+            return new ResponseEntity<>(modelMapper.map(patientService.update(dbPatient), PatientDTO.class), HttpStatus.ACCEPTED);
+        }
+
+        return null;
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        Patient dbPatient = patientService.getById(id);
+
+        if(dbPatient != null){
+            patientService.delete(dbPatient);
+        }
+
+        return ResponseEntity.noContent().build();
     }
 }

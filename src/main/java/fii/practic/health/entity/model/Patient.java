@@ -1,9 +1,6 @@
 package fii.practic.health.entity.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import fii.practic.health.entity.model.Doctor;
-import fii.practic.health.entity.model.Email;
-
 import javax.persistence.*;
 
 @Entity
@@ -21,7 +18,16 @@ public class Patient {
     private Integer age;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "email_id")
     private Email email;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "phone_number_id")
+    private PhoneNumber phoneNumber;
 
     @ManyToOne
     @JsonBackReference
@@ -73,5 +79,21 @@ public class Patient {
 
     public void setEmail(Email email) {
         this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

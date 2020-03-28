@@ -1,15 +1,7 @@
-package fii.practic.health.entity.model;
+package fii.practic.health.boundry.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class EmailDTO {
 
-@Entity
-public class Email {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String email;

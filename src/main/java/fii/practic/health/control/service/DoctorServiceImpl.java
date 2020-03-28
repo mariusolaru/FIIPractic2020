@@ -38,5 +38,18 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.findDoctorsByPatientsFirstName(firstName);
     }
 
+    @Override
+    public Doctor update(Doctor doctor) {
+        return doctorRepository.save(doctor);
+    }
 
+    @Override
+    public Doctor patch(Doctor doctor) {
+        return doctorRepository.save(doctor);
+    }
+
+    @Override
+    public void delete(Doctor doctor) {
+        doctorRepository.delete(doctor);
+    }
 }

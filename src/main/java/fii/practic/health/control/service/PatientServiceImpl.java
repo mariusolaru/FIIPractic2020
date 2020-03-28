@@ -32,4 +32,21 @@ public class PatientServiceImpl implements PatientService {
     public Patient save(Patient doctor) {
         return patientRepository.save(doctor);
     }
+
+    @Override
+    public Patient update(Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    @Override
+    public Patient patch(Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    @Override
+    public void delete(Patient patient) {
+        patientRepository.delete(patient);
+    }
+
+
 }

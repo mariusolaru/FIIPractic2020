@@ -14,4 +14,9 @@ public interface DoctorService {
 
     List<Doctor> findDoctorsByPatientsFirstName(String firstName);
 
+    Doctor update(Doctor doctor);
+
+    Doctor patch(Doctor doctor);
+
+    void delete(Doctor doctor);
 }

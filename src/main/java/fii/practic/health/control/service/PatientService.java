@@ -12,4 +12,10 @@ public interface PatientService {
 
     Patient save(Patient doctor);
 
+    Patient update(Patient patient);
+
+    Patient patch(Patient patient);
+
+    void delete(Patient patient);
+
 }

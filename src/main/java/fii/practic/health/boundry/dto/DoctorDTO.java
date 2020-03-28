@@ -1,6 +1,8 @@
 package fii.practic.health.boundry.dto;
 
-public class PatientDTO {
+import java.util.List;
+
+public class DoctorDTO {
 
     private Long id;
 
@@ -8,7 +10,7 @@ public class PatientDTO {
 
     private String lastName;
 
-    private Integer age;
+    private String speciality;
 
     private EmailDTO email;
 
@@ -16,7 +18,7 @@ public class PatientDTO {
 
     private PhoneNumberDTO phoneNumber;
 
-    private Long doctorId;
+    private List<PatientDTO> patients;
 
     public Long getId() {
         return id;
@@ -42,12 +44,12 @@ public class PatientDTO {
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 
     public EmailDTO getEmail() {
@@ -74,11 +76,11 @@ public class PatientDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public List<PatientDTO> getPatients() {
+        return patients;
     }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+    public void setPatients(List<PatientDTO> patients) {
+        this.patients = patients;
     }
 }

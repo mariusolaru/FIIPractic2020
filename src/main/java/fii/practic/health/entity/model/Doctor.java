@@ -18,6 +18,18 @@ public class Doctor {
 
     private String speciality;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "email_id")
+    private Email email;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "phone_number_id")
+    private PhoneNumber phoneNumber;
+
     @OneToMany(mappedBy = "doctor")
     @JsonManagedReference
     private List<Patient> patients;
@@ -60,6 +72,30 @@ public class Doctor {
 
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
+
+    public void setEmail(Email email) {
+        this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
