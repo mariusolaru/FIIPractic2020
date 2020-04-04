@@ -1,13 +1,20 @@
 package fii.practic.health.boundry.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+
 public class PatientDTO {
 
     private Long id;
 
+    @NotNull
     private String firstName;
 
     private String lastName;
 
+    @PositiveOrZero
+    @Min(value = 18)
     private Integer age;
 
     private EmailDTO email;

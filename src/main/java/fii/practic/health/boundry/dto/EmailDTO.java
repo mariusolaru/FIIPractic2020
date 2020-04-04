@@ -1,9 +1,12 @@
 package fii.practic.health.boundry.dto;
 
+import javax.validation.constraints.Email;
+
 public class EmailDTO {
 
     private Long id;
 
+    @Email
     private String email;
 
     public Long getId() {
