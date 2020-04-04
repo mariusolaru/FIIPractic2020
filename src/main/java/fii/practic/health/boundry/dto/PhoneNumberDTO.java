@@ -1,9 +1,12 @@
 package fii.practic.health.boundry.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class PhoneNumberDTO {
 
     private Long id;
 
+    @Pattern(regexp = "\\+04\\d{10}")
     private String phoneNumber;
 
     public Long getId() {

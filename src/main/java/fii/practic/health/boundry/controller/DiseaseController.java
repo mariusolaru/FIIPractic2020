@@ -1,5 +1,6 @@
 package fii.practic.health.boundry.controller;
 
+import fii.practic.health.aspects.Timed;
 import fii.practic.health.boundry.dto.DiseaseResponseDTO;
 import fii.practic.health.boundry.dto.Latest;
 import fii.practic.health.control.service.DiseaseService;
@@ -30,6 +31,7 @@ public class DiseaseController {
     }
 
     @GetMapping(value = "/cure")
+    @Timed
     public DiseaseResponseDTO curePatients() throws InterruptedException {
         DiseaseResponseDTO response = diseaseService.findAll();
         List<Doctor> doctors = doctorService.getAll();

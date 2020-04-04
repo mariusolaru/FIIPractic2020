@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -57,7 +58,7 @@ public class DoctorController {
     }
 
     @PostMapping
-    public ResponseEntity<DoctorDTO> save(@RequestBody DoctorDTO doctorDTO){
+    public ResponseEntity<DoctorDTO> save(@RequestBody @Valid DoctorDTO doctorDTO){
         Doctor newDoctor = doctorService.save(modelMapper.map(doctorDTO, Doctor.class));
 
         return new ResponseEntity<>(modelMapper.map(newDoctor, DoctorDTO.class), HttpStatus.CREATED);
