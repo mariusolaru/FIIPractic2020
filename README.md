@@ -24,7 +24,7 @@ Open project in Intellij IDEA
 Build
 Run
 ```
-To get a development env running for the client (build in Angular) you must:
+To get a development env running for the client (built in Angular) you must:
 ```
 install Node >= 10
 cd client\fii-practic
