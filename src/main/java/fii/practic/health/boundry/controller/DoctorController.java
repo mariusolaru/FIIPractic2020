@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/doctors")
+@CrossOrigin
 public class DoctorController {
 
     private DoctorService doctorService;
@@ -57,10 +58,10 @@ public class DoctorController {
         return new ResponseEntity<>((List<DoctorDTO>) modelMapper.map(doctors, new TypeToken<List<DoctorDTO>>(){}.getType()), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<DoctorDTO> save(@RequestBody @Valid DoctorDTO doctorDTO){
-        Doctor newDoctor = doctorService.save(modelMapper.map(doctorDTO, Doctor.class));
 
+    @PostMapping
+    public ResponseEntity<DoctorDTO> save(@RequestBody DoctorDTO doctorDTO){
+        Doctor newDoctor = doctorService.save(modelMapper.map(doctorDTO, Doctor.class));
         return new ResponseEntity<>(modelMapper.map(newDoctor, DoctorDTO.class), HttpStatus.CREATED);
     }
 
